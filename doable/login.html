@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Leaderboard - Login</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link href="css/style.css" rel="stylesheet" />
+    <link rel="icon" href="data:," />
+  </head>
+  <body class="dark-bg">
+    <div
+      class="container-fluid min-vh-100 d-flex align-items-center justify-content-center"
+    >
+      <div class="login-card">
+        <div class="text-center mb-4">
+          <h1 class="login-title">🏆 Leaderboard</h1>
+          <p class="text-muted">Student Excellence System</p>
+        </div>
+
+        <ul class="nav nav-pills mb-4 justify-content-center" id="loginTabs">
+          <li class="nav-item">
+            <button
+              class="nav-link active"
+              id="student-tab"
+              type="button"
+              data-role="student"
+            >
+              Student
+            </button>
+          </li>
+          <li class="nav-item">
+            <button
+              class="nav-link"
+              id="admin-tab"
+              type="button"
+              data-role="admin"
+            >
+              Admin
+            </button>
+          </li>
+        </ul>
+
+        <div class="alert alert-info mb-3" id="roleInfo">
+          <small
+            ><i class="bi bi-info-circle"></i>
+            <span id="roleLabel">📚 Logging in as Student</span></small
+          >
+        </div>
+
+        <form id="loginForm">
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input
+              type="email"
+              class="form-control form-control-lg"
+              id="email"
+              placeholder="your@email.com"
+              required
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input
+              type="password"
+              class="form-control form-control-lg"
+              id="password"
+              placeholder="Enter your password"
+              required
+            />
+          </div>
+
+          <button type="submit" class="btn btn-gradient w-100 btn-lg mb-3">
+            Login
+          </button>
+        </form>
+
+        <div id="signupForm" style="display: none">
+          <div class="mb-3">
+            <label for="signupName" class="form-label">Full Name</label>
+            <input
+              type="text"
+              class="form-control form-control-lg"
+              id="signupName"
+              placeholder="Your name"
+              required
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="signupEmail" class="form-label">Email</label>
+            <input
+              type="email"
+              class="form-control form-control-lg"
+              id="signupEmail"
+              placeholder="your@email.com"
+              required
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="signupPassword" class="form-label">Password</label>
+            <input
+              type="password"
+              class="form-control form-control-lg"
+              id="signupPassword"
+              placeholder="Create a password"
+              required
+            />
+          </div>
+
+          <button
+            type="button"
+            class="btn btn-gradient w-100 btn-lg mb-3"
+            onclick="signupUser()"
+          >
+            Create Account
+          </button>
+        </div>
+
+        <div
+          id="errorAlert"
+          class="alert alert-danger alert-dismissible fade show"
+          style="display: none"
+          role="alert"
+        >
+          <strong>Error!</strong> <span id="errorMessage"></span>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="alert"
+          ></button>
+        </div>
+
+        <div
+          id="successAlert"
+          class="alert alert-success alert-dismissible fade show"
+          style="display: none"
+          role="alert"
+        >
+          <strong>Success!</strong> <span id="successMessage"></span>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="alert"
+          ></button>
+        </div>
+
+        <div class="text-center mt-4">
+          <p class="text-muted">
+            <small id="toggleText"
+              >Don't have an account?
+              <a href="#" onclick="toggleSignup(event)" class="text-link"
+                >Sign up</a
+              ></small
+            >
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="module" src="js/app.js"></script>
+  </body>
+</html>
