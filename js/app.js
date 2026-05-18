@@ -343,7 +343,46 @@ window.closeSidebar = function () {
   }
 };
 
+// ================= DARK MODE =================
+
+window.toggleDarkMode = function () {
+  const body = document.body;
+  body.classList.toggle("dark-mode");
+
+  // Save preference to localStorage
+  const isDarkMode = body.classList.contains("dark-mode");
+  localStorage.setItem("darkMode", isDarkMode);
+
+  // Update button
+  const btn = document.querySelector(".dark-mode-toggle");
+  if (btn) {
+    btn.innerHTML = isDarkMode ? "☀️" : "🌙";
+  }
+};
+
+// Initialize dark mode from localStorage
+function initDarkMode() {
+  const isDarkMode = localStorage.getItem("darkMode") === "true";
+  if (isDarkMode) {
+    document.body.classList.add("dark-mode");
+    const btn = document.querySelector(".dark-mode-toggle");
+    if (btn) btn.innerHTML = "☀️";
+  }
+}
+
 document.addEventListener("DOMContentLoaded", () => {
+  initDarkMode();
+
+  // Create dark mode toggle button if it doesn't exist
+  if (!document.querySelector(".dark-mode-toggle")) {
+    const btn = document.createElement("button");
+    btn.className = "dark-mode-toggle";
+    btn.innerHTML = "🌙";
+    btn.onclick = toggleDarkMode;
+    btn.title = "Toggle dark mode";
+    document.body.appendChild(btn);
+  }
+
   // Close sidebar when clicking on a nav link
   const navLinks = document.querySelectorAll(".sidebar .nav-link");
   navLinks.forEach((link) => {
